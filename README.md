@@ -14,4 +14,4 @@
 
 # Sprints
 
-[Sprint 1](https://github.com/neivis04/PB_CYNTHIA_NEIVA/tree/0946160f88c7b9f5016ed97f2c7290890dd9ffb1/Sprint%201)
+ * :white_check_mark: [Sprint 1](https://github.com/neivis04/PB_CYNTHIA_NEIVA/tree/0946160f88c7b9f5016ed97f2c7290890dd9ffb1/Sprint%201)
