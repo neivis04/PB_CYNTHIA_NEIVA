@@ -13,19 +13,16 @@ Utilize o arquivo README.md da Sprint para organizar todas as suas entregas. Fa�
 
 # Exercícios
 
+1. De acordo com os parâmetros apresentados, o link abaixo refere-se à primeira etapa do desafio, que consiste em criar um diretório chamado 'vendas' dentro do diretório 'ecommerce', além de um subdiretório chamado 'backup' dentro do diretório "vendas". Além disso, o script gera relatórios com base em um arquivo CSV e compacta o diretório de backup em um arquivo .zip a cada execução.
 
-1. ...
-[Resposta Ex1.](exercicios/ex1.txt)
+[Resposta Ex2.](exercicios/ex2.txt)
 
+2. Subsequentemente, foi solicitado um script para gerar o relatório final, consolidando todos os relatórios criados na etapa 1 em um único arquivo.
 
-2. ...
 [Resposta Ex2.](exercicios/ex2.txt)
 
 
-
-
 # Evidências
-
 
 Ao executar o código do exercício ... observei que ... conforme podemos ver na imagem a seguir:
 
@@ -33,11 +30,7 @@ Ao executar o código do exercício ... observei que ... conforme podemos ver na
 ![Evidencia 1](evidencias/sample.webp)
 
 
-
 # Certificados
-
 
 - Certificado do Curso ABC
 ![Curso ABC](certificados/sample.png)
-
-
