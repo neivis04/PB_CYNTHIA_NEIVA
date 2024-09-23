@@ -43,4 +43,4 @@ Em seguida com os teste do processamento_de_vendas e crontab funcinando perfeita
 
 * Certificado da do Curso Introdução ao Design de Interação (UX/UI) (Tic em Trilhas)
 
-<img src="certificados/DESIGN_(UX.UI).png" width="600px">
+<img src="certificados/DESIGN_(UX.UI).jpg" width="600px">
