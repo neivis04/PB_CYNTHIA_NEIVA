@@ -1,43 +1,46 @@
-
-# Instruções
-
-Neste arquivo você irá apresentar suas entregas da Sprint corrente. Observe que existem 4 diretórios no exemplo: **exercícios**, **certificados** e **evidências**.
-
- - O diretório **exercícios** corresponde ao local onde você irá adicionar o código-fonte das atividades de codificação da Sprint, quando houver.
- - O diretório **evidências** você pode utilizar para adicionar imagens demonstrando a execução/resultados de atividades, quando necessário.
- - O diretório **certificados** é o local onde você irá armazenar os certificados dos cursos solicitados durante a sprint. O nome de cada certificado de corresponder ao título do curso.
- - O diretório **desafio** é o local onde você irá armazenar a resolução do que se pede no desafio, todos recursos que você considerar importante deverá está dentro desse diretório.
-
-Utilize o arquivo README.md da Sprint para organizar todas as suas entregas. Faça referência aos arquivos de código-fonte. Evite colocar código diretamente no Markdown pois dificulta nossa avaliação.
-
-
-# Exercícios
-
-
-1. ...
-[Resposta Ex1.](exercicios/ex1.txt)
-
-
-2. ...
-[Resposta Ex2.](exercicios/ex2.txt)
-
-
-
-
 # Evidências
 
+Na primeira tentativa de criação do código do arquivo processamentos_de_vendas.sh, observei que estava errando na estrutura do código e na sintaxe, porém estava com a ideia formada na mente, conforme podemos ver na imagem a seguir:
 
-Ao executar o código do exercício ... observei que ... conforme podemos ver na imagem a seguir:
+<img src="evidencias/INICIO_DO_PROC..png" width="600px">
 
+Partindo da primeira tentativa, estudei mais possibilidades da criação do código e comandos do linux, conforme a imagem a seguir:
 
-![Evidencia 1](evidencias/sample.webp)
+<img src="evidencias/PROC._DE_VENDAS.png" width="600px">
 
+Tive bons resultados logo após em modificar completamente o meu código, o script estava navegando corretamente entre os diretórios e zipando conforme requisitado o relatório, como podemos observar a seguir:
+
+<img src="evidencias/1_ZIP.png" width="600px">
+
+Observei que no processo do script estava errando nos comandos para ler o arquivo csv, mas procurei mentorias e conseguir executar, como pode observar a seguir:
+
+<img src="evidencias/1_RELATORIO.png" width="600px">
+
+Após o script do processamento_de_vendas esta rodando normalmente e sem erros, comecei a fazer testes no crontab sem nenhuma dificuldade, conforme a seguir:
+
+<img src="evidencias/1_AGENDAMENTO.png" width="600px">
+<img src="evidencias/1_RESULTADO.png" width="600px">
+
+Em seguida com os teste do processamento_de_vendas e crontab funcinando perfeitamente, criei o arquivo consolidador_de_processamento_de_vendas.sh, não tive nenhuma dificuldade desta vez ja que pesquisei bastante de como para fazer o primeiro script.
+
+<img src="evidencias/RESULTADOS_FINAIS.png" width="600px">
+<img src="evidencias/FINAL.png" width="600px">
 
 
 # Certificados
 
+* Certificado do Curso HTML5 BÁSICO (REFATORANDO)
 
-- Certificado do Curso ABC
-![Curso ABC](certificados/sample.png)
+<img src="certificados/HTML_5_BÁSICO.png" width="600px">
 
+* Certificado da Imersão Alura Front-end (Alura)
 
+<img src="certificados/IMERSAO_FRONTEND.png" width="600px">
+
+* Certificado da Imersão Alura Ánalises de Dados com IA (Alura)
+
+<img src="certificados/IMERSAO_DADOS_IA.png" width="600px">
+
+* Certificado da do Curso Introdução ao Design de Interação (UX/UI) (Tic em Trilhas)
+
+<img src="certificados/DESIGN_(UX/UI).png" width="600px">
