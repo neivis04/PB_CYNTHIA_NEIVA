@@ -2,13 +2,13 @@
 
 Na primeira tentativa de criação do código do arquivo processamentos_de_vendas.sh, observei que estava errando na estrutura do código e na sintaxe, porém estava com a ideia formada na mente, conforme podemos ver na imagem a seguir:
 
-<img src="evidencias/INICIO_DO_PROC..png" width="600px">
+<img src="evidencias/INICIO_DO_PROC.png" width="600px">
 
 Partindo da primeira tentativa, estudei mais possibilidades da criação do código e comandos do linux, conforme a imagem a seguir:
 
 <img src="evidencias/PROC._DE_VENDAS.png" width="600px">
 
-Tive bons resultados logo após em modificar completamente o meu código, o script estava navegando corretamente entre os diretórios e zipando conforme requisitado o relatório, como podemos observar a seguir:
+Tive bons resultados logo após modificar completamente o meu código, o script estava navegando corretamente entre os diretórios e zipando conforme requisitado, como podemos observar a seguir:
 
 <img src="evidencias/1_ZIP.png" width="600px">
 
