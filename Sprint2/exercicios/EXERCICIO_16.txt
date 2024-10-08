@@ -1,0 +1,16 @@
+select 
+    estado, 
+    nmpro, 
+    ROUND(AVG(qtd), 4) AS quantidade_media
+    
+from 
+    TBVENDAS
+    
+where 
+    status = 'Concluído'
+    
+group by 
+    estado, nmpro
+    
+order by 
+    estado asc, nmpro asc;

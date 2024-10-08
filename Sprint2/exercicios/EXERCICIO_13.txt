@@ -1,0 +1,22 @@
+select 
+    TBE.cdpro, 
+    TBV.nmcanalvendas, 
+    TBV.nmpro, 
+    SUM(TBV.qtd) as quantidade_vendas
+    
+from 
+    TBVENDAS TBV
+    
+join 
+    TBESTOQUEPRODUTO TBE on TBV.cdpro = TBE.cdpro
+    
+where 
+    TBV.nmcanalvendas IN ('Ecommerce', 'Matriz') 
+    and TBV.status = 'Concluído'
+    
+group by 
+    TBE.cdpro, TBV.nmcanalvendas, TBV.nmpro
+    
+order by 
+    quantidade_vendas asc
+limit 10;
