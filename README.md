@@ -13,4 +13,4 @@
 * :card_index_dividers: Experiência: Técnica de Edificações e Orçamentista.
 
 # Sprints
-[Sprint 02]([https://www.openai.com](https://github.com/neivis04/PB_CYNTHIA_NEIVA/tree/main/Sprint2)
+[Sprint 02](https://github.com/neivis04/PB_CYNTHIA_NEIVA/tree/main/Sprint2)
