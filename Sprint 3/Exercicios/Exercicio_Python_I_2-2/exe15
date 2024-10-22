@@ -1,0 +1,31 @@
+class Lampada:
+    def __init__(self, ligada=False):
+        """Inicializa a lâmpada com o estado fornecido (ligada ou desligada)."""
+        self.ligada = ligada
+
+    def liga(self):
+        """Muda o estado da lâmpada para ligada."""
+        self.ligada = True
+
+    def desliga(self):
+        """Muda o estado da lâmpada para desligada."""
+        self.ligada = False
+
+    def esta_ligada(self):
+        """Retorna verdadeiro se a lâmpada estiver ligada, falso caso contrário."""
+        return self.ligada
+
+
+# Testando a classe Lampada
+# Lâmpada começa desligada
+lampada = Lampada()  
+
+# Liga a lâmpada
+lampada.liga()
+ # Esperado: True
+print(f"A lâmpada está ligada? {lampada.esta_ligada()}") 
+
+# Desliga a lâmpada
+lampada.desliga()
+# Esperado: False
+print(f"A lâmpada ainda está ligada? {lampada.esta_ligada()}")  

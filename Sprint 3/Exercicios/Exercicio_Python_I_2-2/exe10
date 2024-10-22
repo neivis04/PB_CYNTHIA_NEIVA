@@ -1,0 +1,12 @@
+def remover_duplicados(lista):
+    # Usando set para remover duplicados e convertendo de volta para lista
+    return list(set(lista))
+
+# Lista para teste
+lista_teste = ['abc', 'abc', 'abc', '123', 'abc', '123', '123']
+
+# Chamando a função e armazenando o resultado
+resultado = remover_duplicados(lista_teste)
+
+# Imprimindo a nova lista sem duplicados
+print(resultado)

@@ -1,0 +1,21 @@
+class Pessoa:
+    def __init__(self, id):
+        self.id = id
+        # Atributo privado inicializado
+        self.__nome = None  
+    @property
+    def nome(self):
+        # Método para retornar o valor de __nome
+        return self.__nome  
+
+    @nome.setter
+    def nome(self, nome):
+         # Método para definir o valor de __nome
+        self.__nome = nome 
+
+# Exemplo de uso
+pessoa = Pessoa(0) 
+# Usando o setter
+pessoa.nome = 'Cynthia'  
+# Usando o getter
+print(pessoa.nome)  
