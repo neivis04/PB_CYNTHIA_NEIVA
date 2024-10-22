@@ -1,0 +1,8 @@
+# Listas fornecidas
+primeirosNomes = ['Joao', 'Douglas', 'Lucas', 'José']
+sobreNomes = ['Soares', 'Souza', 'Silveira', 'Pedreira']
+idades = [19, 28, 25, 31]
+
+# Imprimindo os dados no formato desejado usando enumerate
+for i, primeiroNome in enumerate(primeirosNomes):
+    print(f"{i} - {primeiroNome} {sobreNomes[i]} está com {idades[i]} anos")
