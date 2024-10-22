@@ -14,11 +14,32 @@
 
 # Evidências
 
-
-Ao executar o código do exercício ... observei que ... conforme podemos ver na imagem a seguir:
-
 ![Evidencia 1](Evidencias/Primeiro_Teste.png)
+* Primeiro teste do grafico de tabelas.
+<br>
+<br>
+<br>
 
+![Evidencia 2](Evidencias/Pie_Chart_1.png)
+* Primeiro grafico criado do Pie Chart.
+<br>
+<br>
+<br>
+
+![Evidencia 3](Evidencias/Pie_Chart_2.png)
+* Segundo grafico criado do Pie Chart.
+
+![Evidencia 3](Evidencias/Pie_Chart_3.png)
+* Terceiro grafico criado do Pie Chart.
+<br>
+<br>
+<br>
+
+![Evidencia 4](Evidencias/Pie_Chart_4.png)
+* Quarto grafico criado do Pie Chart.
+<br>
+<br>
+<br>
 
 # Certificados
 
