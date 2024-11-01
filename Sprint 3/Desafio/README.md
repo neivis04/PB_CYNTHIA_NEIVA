@@ -10,11 +10,11 @@
   
 # Gráfico Barras dos 5 apps Mais Instalados - Etapa 02 #
 
-![Img 2](Evidencias/Execucao_do_Desafio/etapa02_1.png)
+![Img 2](../Evidencias/Execucao_do_Desafio/etapa02_1.png)
 <br>
-![Img 3](Evidencias/Execucao_do_Desafio/etapa02_2.png)
+![Img 3](../Evidencias/Execucao_do_Desafio/etapa02_2.png)
 <br>
-![Img 4](Evidencias/Execucao_do_Desafio/grafico_etapa02.png)
+![Img 4](../Evidencias/Execucao_do_Desafio/grafico_etapa02.png)
 
 O código tem como objetivo carregar dados de um arquivo CSV contendo informações de aplicativos da Google Play Store, realizar algumas transformações e, em seguida, visualizar os 5 aplicativos mais instalados por meio de um gráfico de barras. Abaixo está a análise detalhada de cada parte do código.
 
@@ -26,11 +26,11 @@ O código tem como objetivo carregar dados de um arquivo CSV contendo informaç�
 
 # Gráfico Pie Chart das Categorias Mais Existentes - Etapa 03 #
 
-![Img 4](Evidencias/Execucao_do_Desafio/etapa03_1.png)
+![Img 4](../Evidencias/Execucao_do_Desafio/etapa03_1.png)
 <br>
-![Img 5](Evidencias/Execucao_do_Desafio/etapa03_2.png)
+![Img 5](../Evidencias/Execucao_do_Desafio/etapa03_2.png)
 <br>
-![Img 6](Evidencias/Execucao_do_Desafio/grafico_etapa03.png)
+![Img 6](../Evidencias/Execucao_do_Desafio/grafico_etapa03.png)
 
 Este código tem como objetivo analisar a distribuição das categorias de aplicativos da Google Play Store e visualizar as 6 principais categorias em um gráfico de pizza, agrupando as demais em "Outros".
 
@@ -41,9 +41,9 @@ Este código tem como objetivo analisar a distribuição das categorias de aplic
 
 # App Mais Caro do Dataset - Etapa 04 #
 
-![Img 7](Evidencias/Execucao_do_Desafio/etapa04.png)
+![Img 7](../Evidencias/Execucao_do_Desafio/etapa04.png)
 <br>
-![Img 8](Evidencias/Execucao_do_Desafio/resultado_etapa04.png)
+![Img 8](../Evidencias/Execucao_do_Desafio/resultado_etapa04.png)
 
 Este código realiza a leitura e manipulação de dados de aplicativos da Google Play Store para identificar o app mais caro e converter seu preço de dólares para reais, utilizando a taxa de câmbio fornecida. Abaixo está a análise detalhada de cada parte do código.
 
@@ -57,7 +57,7 @@ Este código realiza a leitura e manipulação de dados de aplicativos da Google
 
 # Apps Classificados como "Mature 17+" - Etapa 05 #
 
-![Img 9](Evidencias/Execucao_do_Desafio/etapa05.png)
+![Img 9](../Evidencias/Execucao_do_Desafio/etapa05.png)
 
 Este código tem como objetivo analisar um conjunto de dados sobre aplicativos da Google Play Store para identificar quantos deles são classificados como "Mature 17+". Ele realiza a leitura dos dados, remove duplicatas, filtra as classificações e exibe o resultado. Abaixo está a análise detalhada de cada parte do código.
 
@@ -68,9 +68,9 @@ Este código tem como objetivo analisar um conjunto de dados sobre aplicativos d
 
 # Lista dos 10 Apps com Mais Reviews - Etapa 06 #
 
-![Img 10](Evidencias/Execucao_do_Desafio/etapa06.png)
+![Img 10](../Evidencias/Execucao_do_Desafio/etapa06.png)
 <br>
-![Img 11](Evidencias/Execucao_do_Desafio/resultado_etapa06.png)
+![Img 11](../Evidencias/Execucao_do_Desafio/resultado_etapa06.png)
 
 O código lê um conjunto de dados sobre aplicativos da Google Play Store, limpa e processa os dados para identificar os 10 aplicativos com o maior número de avaliações (reviews). Abaixo está a análise detalhada de cada parte do código.
 
@@ -81,9 +81,9 @@ O código lê um conjunto de dados sobre aplicativos da Google Play Store, limpa
 
 # Média das Avaliações das 7 Principais Categorias - Etapa 07 #
 
-![Img 12](Evidencias/Execucao_do_Desafio/etapa07_1.png)
+![Img 12](../Evidencias/Execucao_do_Desafio/etapa07_1.png)
 <br>
-![Img 13](Evidencias/Execucao_do_Desafio/resultado_etapa07_1.png)
+![Img 13](../Evidencias/Execucao_do_Desafio/resultado_etapa07_1.png)
 
 Este código processa um conjunto de dados sobre aplicativos da Google Play Store com o objetivo de calcular e exibir a média das avaliações (ratings) por categoria. Ele inclui etapas de limpeza e manipulação dos dados, além de apresentar os resultados de forma organizada. Abaixo está a análise detalhada de cada parte do código.
 
@@ -97,13 +97,13 @@ Este código processa um conjunto de dados sobre aplicativos da Google Play Stor
 
 # Grafico da Média das Avaliações das 7 Principais Categorias - Etapa 07 #
 
-![Img 14](Evidencias/Execucao_do_Desafio/grafico_etapa07_1.png)
+![Img 14](../Evidencias/Execucao_do_Desafio/grafico_etapa07_1.png)
 
 # Listas e Média dos 03 Aplicativos Mais Baratos e os 03 Aplicativos Mais Caros #
 
-![Img 15](Evidencias/Execucao_do_Desafio/etapa07_2.png)
+![Img 15](../Evidencias/Execucao_do_Desafio/etapa07_2.png)
 <br>
-![Img 16](Evidencias/Execucao_do_Desafio/resultado_etapa07_2.png)
+![Img 16](../Evidencias/Execucao_do_Desafio/resultado_etapa07_2.png)
 
 Este código realiza uma análise de preços de aplicativos na Google Play Store, destacando os três aplicativos mais caros e mais baratos, além de calcular a média de preços dessas duas categorias. Abaixo está uma descrição detalhada de cada etapa.
 
@@ -114,5 +114,5 @@ Este código realiza uma análise de preços de aplicativos na Google Play Store
 * Os resultados são formatados e exibidos, mostrando os três aplicativos mais caros e baratos, bem como as médias de preço dessas categorias.
 
 # Gráfico da Listas e Média dos 03 Aplicativos Mais Baratos e os 03 Aplicativos Mais Caros #
-![Img 17](Evidencias/Execucao_do_Desafio/grafico_etapa07_2.png)
+![Img 17](../Evidencias/Execucao_do_Desafio/grafico_etapa07_2.png)
 
