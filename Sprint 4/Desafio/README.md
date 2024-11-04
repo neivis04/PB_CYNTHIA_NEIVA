@@ -20,7 +20,7 @@ O objetivo desse desafio é praticar o uso de Docker com Python para trabalhar c
 
 <br>
 
-* Após a criação do Dockerfile, usei o comando docker build -t carguru_image . para a criação da imagem
+* Após a criação do Dockerfile, usei o comando docker build -t carguru_image . para a criação da imagem.
 
 # Criação do Container - Etapa 01
  
@@ -28,7 +28,7 @@ O objetivo desse desafio é praticar o uso de Docker com Python para trabalhar c
 
 <br>
 
-* Logo após, com o comando docker run --name carguru_container carguru_image, criei o container partind da imagem criada
+* Logo após, com o comando docker run --name carguru_container carguru_image, criei o container partind da imagem criada.
 
 
 # Reutilização de Containers - Etapa 01
@@ -37,7 +37,7 @@ O objetivo desse desafio é praticar o uso de Docker com Python para trabalhar c
 
 <br>
 
-* Respondendo o questionaemnto levantado no desafio, sim, é possível reutilizar containers parados no Docker. Para reiniciar um container parado, apenas utilizando o comando: docker start carguru_container
+* Respondendo o questionamento levantado no desafio. Sim, é possível reutilizar containers parados no Docker. Para reiniciar um container parado, apenas utilizando o comando: docker start carguru_container.
 
 
   
