@@ -1,0 +1,20 @@
+from functools import reduce
+
+def calcula_saldo(lancamentos) -> float:
+    # Mapeia os lançamentos para valores positivos e negativos
+    valores = map(lambda x: x[0] if x[1] == 'C' else -x[0], lancamentos)
+    
+    # Reduz a lista de valores a um único saldo
+    saldo_final = reduce(lambda acc, val: acc + val, valores, 0)
+    
+    return saldo_final
+
+# Exemplo de uso
+lancamentos = [
+    (200, 'D'),
+    (300, 'C'),
+    (100, 'C')
+]
+
+resultado = calcula_saldo(lancamentos)
+print(resultado)  # Saída: 200

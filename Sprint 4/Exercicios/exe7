@@ -1,0 +1,4 @@
+def pares_ate(n: int):
+    """Generator que retorna valores pares no intervalo [2, n]."""
+    for i in range(2, n + 1, 2):  # Começa em 2 e incrementa de 2 em 2
+        yield i  # Retorna o valor atual e pausa a execução

@@ -1,0 +1,28 @@
+import random
+
+# Gerar um arquivo com 10.000 números inteiros aleatórios
+with open("numeros.txt", "w") as f:
+    for _ in range(10000):
+        f.write(f"{random.randint(1, 10000)}\n")
+
+# Função para processar os números
+def processar_numeros(arquivo):
+    with open(arquivo, "r") as f:
+        # Ler números do arquivo e converter para inteiros
+        numeros = list(map(int, f.readlines()))
+        
+        # Filtrar números pares
+        pares = filter(lambda x: x % 2 == 0, numeros)
+        
+        # Ordenar números pares em ordem decrescente e pegar os 5 maiores
+        cinco_maiores = sorted(pares, reverse=True)[:5]
+        
+        # Calcular a soma dos 5 maiores pares
+        soma_maiores = sum(cinco_maiores)
+        
+        # Imprimir os resultados
+        print(cinco_maiores)
+        print(soma_maiores)
+
+# Chamar a função com o arquivo criado
+processar_numeros("numeros.txt")

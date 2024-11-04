@@ -1,0 +1,27 @@
+def calcular_valor_maximo(operadores: list, operandos: list) -> float:
+    # Define uma função que aplica a operação correta
+    def aplicar_operacao(op: str, a: float, b: float) -> float:
+        if op == '+':
+            return a + b
+        elif op == '-':
+            return a - b
+        elif op == '*':
+            return a * b
+        elif op == '/':
+            return a / b
+        elif op == '%':
+            return a % b
+        else:
+            raise ValueError(f'Operador inválido: {op}')
+    
+    # Aplica as operações aos operandos
+    resultados = map(lambda x: aplicar_operacao(x[0], x[1][0], x[1][1]), zip(operadores, operandos))
+    
+    # Retorna o maior valor
+    return max(resultados)
+
+# Exemplo de uso
+operadores = ['+', '-', '*', '/', '+']
+operandos  = [(3, 6), (-7, 4.9), (8, -8), (10, 2), (8, 4)]
+resultado = calcular_valor_maximo(operadores, operandos)
+print(resultado)  # Saída: 12

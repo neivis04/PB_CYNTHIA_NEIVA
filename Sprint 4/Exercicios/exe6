@@ -1,0 +1,13 @@
+def maiores_que_media(conteudo: dict) -> list:
+    """Retorna produtos com preço superior à média, ordenados por preço."""
+    
+    # Calcula a média dos preços
+    media = sum(conteudo.values()) / len(conteudo)
+    
+    # Filtra produtos com preço maior que a média
+    produtos_acima = [(nome, preco) for nome, preco in conteudo.items() if preco > media]
+    
+    # Ordena os produtos pelo preço em ordem crescente
+    produtos_acima.sort(key=lambda x: x[1])
+    
+    return produtos_acima

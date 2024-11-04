@@ -1,0 +1,13 @@
+def conta_vogais(texto: str) -> int:
+    # Define as vogais
+    vogais = 'aeiouAEIOU'
+    
+    # Filtra as letras que são vogais
+    letras_vogais = filter(lambda letra: letra in vogais, texto)
+    
+    # Conta o número de vogais
+    return len(list(letras_vogais))
+
+# Exemplo de uso
+resultado = conta_vogais("Olá, como você está?")
+print(resultado)  # Saída: 8
