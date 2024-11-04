@@ -1,0 +1,9 @@
+select
+    L.titulo, L.valor
+
+from
+    LIVRO L
+    
+order by
+    L.valor desc
+    limit 10;

@@ -1,0 +1,11 @@
+select 
+    cdven
+    
+from 
+    TBVENDAS
+    
+where 
+    deletado = '1'
+
+order by
+    cdven asc;

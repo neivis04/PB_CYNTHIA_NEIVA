@@ -1,0 +1,15 @@
+select  
+    A.codAutor, A.nome, A.nascimento, 
+    COUNT(L.cod) as quantidade
+    
+from 
+    AUTOR A
+    
+left join
+    LIVRO L on A.codAutor = L.autor
+    
+group by 
+    A.codAutor, A.nome, A.nascimento
+    
+order by 
+    A.nome asc;

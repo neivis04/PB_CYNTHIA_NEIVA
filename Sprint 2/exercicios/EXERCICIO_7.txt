@@ -1,0 +1,14 @@
+select
+    A.nome
+    
+from
+    AUTOR A
+    
+left join
+    LIVRO L on A.codAutor = L.autor
+    
+where
+    L.cod IS null
+    
+order by
+    A.nome asc;

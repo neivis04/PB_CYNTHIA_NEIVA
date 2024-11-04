@@ -1,0 +1,19 @@
+ select 
+    E.nome, EN.estado, EN.cidade
+    COUNT(L.cod) AS quantidade, 
+    
+from 
+    LIVRO L
+    
+join 
+    EDITORA E ON L.editora = E.codEditora
+    
+join 
+    ENDERECO EN ON E.endereco = EN.codEndereco
+    
+group by 
+    E.nome, EN.estado, EN.cidade
+    
+order by
+    quantidade DESC
+limit 5;
