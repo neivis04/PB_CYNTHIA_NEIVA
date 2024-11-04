@@ -7,10 +7,35 @@
 
 # Evidências
 
+![Evidencia 1](Evidencias/Primeiro_Script.png)
 
-Ao executar o código do exercício ... observei que ... conforme podemos ver na imagem a seguir:
+<br>
 
-![Evidencia 1](Evidencias/Primeiro_Teste.png)
+* Primeiro Scrpit feito para estudo do programa Docker.
+
+<br>
+
+![Evidencia 2](Evidencias/Primeiro_Dockerfile.png)
+
+<br>
+
+* Primeiro Dockerfile criado.
+
+<br>
+
+![Evidencia 3](Evidencias/Primeira_Imagem.png)
+
+<br>
+
+* Primeira imagem criada partindo do Dockerfile.
+
+<br>
+
+![Evidencia 4](Evidencias/Aperfeicoando_Script.png)
+
+<br>
+
+* Aperfeiçoando o script Hash para execução do desafio.
 
 
 # Certificados
