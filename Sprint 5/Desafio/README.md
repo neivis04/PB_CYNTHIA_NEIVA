@@ -4,9 +4,15 @@
 O objetivo deste desafio é avaliar a capacidade de manipular e analisar dados de forma eficiente utilizando Python e bibliotecas populares como Pandas, além de demonstrar familiaridade com ferramentas da AWS, como o S3. Mostra habilidades em transformar dados, realizar filtragens com base em critérios específicos, criar colunas derivadas e produzir saídas organizadas e úteis.
 
 ## Etapas do Desafio ##
- * [Etapa 01 - Script de importação para o bucket](https://github.com/neivis04/PB_CYNTHIA_NEIVA/tree/main/Sprint%201) <br>
- 
-
+ 1. [Etapa 01: Criação do Bucket](https://github.com/neivis04/PB_CYNTHIA_NEIVA/edit/main/Sprint%205/Desafio/README.md#etapa-01-cria%C3%A7%C3%A3o-do-bucket)
+ 2. [Etapa 01: Script de Importação para o Bucket](https://github.com/neivis04/PB_CYNTHIA_NEIVA/edit/main/Sprint%205/Desafio/README.md#etapa-01-script-de-importa%C3%A7%C3%A3o-para-o-bucket)
+ 3. [Etapa 02: Manipulação do Dataframe](https://github.com/neivis04/PB_CYNTHIA_NEIVA/edit/main/Sprint%205/Desafio/README.md#etapa-01-script-de-importa%C3%A7%C3%A3o-para-o-bucket)<br>
+ 3.1 [Filtrar Dados](https://github.com/neivis04/PB_CYNTHIA_NEIVA/edit/main/Sprint%205/Desafio/README.md#--filtrar-dados)<br>
+ 3.2 [Função de Agregação](https://github.com/neivis04/PB_CYNTHIA_NEIVA/tree/main/Sprint%205/Desafio#--fun%C3%A7%C3%B5es-de-agrega%C3%A7%C3%A3o)<br>
+ 3.4 [Função Condicional](https://github.com/neivis04/PB_CYNTHIA_NEIVA/tree/main/Sprint%205/Desafio#--fun%C3%A7%C3%B5es-de-condicional)<br>
+ 3.5 [Função de Conversão](https://github.com/neivis04/PB_CYNTHIA_NEIVA/tree/main/Sprint%205/Desafio#--fun%C3%A7%C3%B5es-de-convers%C3%A3o)<br>
+ 3.6 [Função de Data](https://github.com/neivis04/PB_CYNTHIA_NEIVA/tree/main/Sprint%205/Desafio#--fun%C3%A7%C3%B5es-de-data)<br>
+ 3.7 [Função de String](https://github.com/neivis04/PB_CYNTHIA_NEIVA/tree/main/Sprint%205/Desafio#--fun%C3%A7%C3%B5es-de-string)<br>
 
 ## Etapa 01: Criação do Bucket ##
 
