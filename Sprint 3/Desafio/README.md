@@ -1,6 +1,6 @@
 # Tratamento de Dados - Etapa 01 #
 
-![Img 1](Evidencias/Execucao_do_Desafio/etapa01.png)
+![Img 1](../Evidencias/Execucao_do_Desafio/etapa01.png)
 
 * A função pd.read_csv() é usada para ler dados de um arquivo CSV e armazená-los em um DataFrame (df), que é uma estrutura de dados similar a uma tabela, contendo linhas e colunas.
 * O nome do arquivo 'googleplaystore.csv' sugere que estamos lidando com um dataset contendo informações sobre aplicativos da Google Play Store, como nome, categoria, nota, número de downloads, etc.

@@ -167,3 +167,10 @@ As operações seguintes são aplicadas para limpar e padronizar os valores da c
 
 - index=False: Esse parâmetro indica que o índice do DataFrame não será incluído no arquivo CSV. Isso é útil quando o índice não tem relevância como uma coluna nos dados salvos.
 
+## - Finalização do Bucket ##
+
+<img src="../Evidencias/Execucao_Desafio/bucket_final.png" width="800px">
+
+<br>
+
+Após a execução do arquivo de manipulação, enivei os arquivos do desafio para o bucket, sendo assim finalizando o desafio.
