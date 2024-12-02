@@ -1,10 +1,10 @@
-# Sobre mim  
 
 <div align="center">
   <img src="https://github.com/user-attachments/assets/0d1c1b89-d2b8-40f0-b83c-89b9261c6659" width="1000px">
 </div>
 
-<br> <br>
+# Sobre mim  
+
 * :round_pushpin: Localização: Belém-Pa. 
 * :black_nib: Instituição de Ensino: Universidade Federal Rural da Amazônia.
 * :computer: Graduação: Bacharelado em Sistemas de Informação.
