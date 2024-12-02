@@ -43,3 +43,22 @@
 ## Etapa 03: Criar Tabela ##
 
 <img src="../Evidencias/Execucao_Exercicio/Exercicio_Lab_Athena/etapa.03.png" width="700px">
+
+# Exercicio Lambda #
+
+## Etapa 01: Criar a função do Lambda ##
+
+ <img src="../Evidencias/Execucao_Exercicio/Exercicio_Lab_Lambda/etapa.01.png" width="700px">
+
+ ## Etapa 02: Construir o Código ##
+
+ <img src="../Evidencias/Execucao_Exercicio/Exercicio_Lab_Lambda/etapa.02.1.png" width="700px">
+
+ 
+ <img src="../Evidencias/Execucao_Exercicio/Exercicio_Lab_Lambda/etapa.02.2.png" width="700px">
+
+ ## Etapa 03: Criar uma Layer ##
+
+  <img src="../Evidencias/Execucao_Exercicio/Exercicio_Lab_Lambda/etapa.03.png" width="700px">
+
+
