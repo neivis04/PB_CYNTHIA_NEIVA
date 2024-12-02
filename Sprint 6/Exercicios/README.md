@@ -24,3 +24,22 @@
    ## Etapa 06: Teste endpoint ##
 
  <img src="../Evidencias/Execucao_Exercicio/Exercicio_Lab_AWS_S3/etapa.07.png" width="700px">
+
+
+ # Exercicio  Lab Athena #
+
+## Etapa 01: Configurar Athena ##
+
+<img src="../Evidencias/Execucao_Exercicio/Exercicio_Lab_Athena/etapa.01.1.png" width="700px">
+<br>
+<img src="../Evidencias/Execucao_Exercicio/Exercicio_Lab_Athena/etapa.01.2.png" width="700px">
+<br>
+<img src="../Evidencias/Execucao_Exercicio/Exercicio_Lab_Athena/etapa.01.3.png" width="700px">
+
+## Etapa 02: Criar um Banco de Dados ##
+
+<img src="../Evidencias/Execucao_Exercicio/Exercicio_Lab_Athena/etapa.02.png" width="700px">
+
+## Etapa 03: Criar Tabela ##
+
+<img src="../Evidencias/Execucao_Exercicio/Exercicio_Lab_Athena/etapa.03.png" width="700px">
