@@ -1,176 +1,116 @@
 
 # Objetivo do Desafio #
 
-O objetivo deste desafio é avaliar a capacidade de manipular e analisar dados de forma eficiente utilizando Python e bibliotecas populares como Pandas, além de demonstrar familiaridade com ferramentas da AWS, como o S3. Mostra habilidades em transformar dados, realizar filtragens com base em critérios específicos, criar colunas derivadas e produzir saídas organizadas e úteis.
+O objetivo do desafio é automatizar o upload de arquivos CSV para um bucket S3 usando um container Docker. Ele testa habilidades em criação e gestão de containers, integração com AWS, organização de dados na nuvem e automação de processos com Python.
 
-## Etapas do Desafio ##
- * [Etapa 01 - Script de importação para o bucket](https://github.com/neivis04/PB_CYNTHIA_NEIVA/tree/main/Sprint%201) <br>
- 
+## Etapa 01: Script em python para automação  ##
 
-
-## Etapa 01: Criação do Bucket ##
-
- <img src="../Evidencias/Execucao_Desafio/criacao_bucket.png" width="800px">
+ <img src="../Evidencias/Execucao_Desafio/script1-py.png" width="600px">
 
  <br>
 
-* No console da AWS, criei um bucket para a execução do desafio.
+1. Importação de Bibliotecas
+* import os: A biblioteca os fornece funcionalidades para interagir com o sistema operacional, como acessar variáveis de ambiente e manipular caminhos de arquivos.
 
+* import boto3: boto3 é a biblioteca oficial da AWS para Python. Ela é usada para interagir com serviços da AWS, como o S3, permitindo o upload e download de arquivos, entre outras operações.
 
-## Etapa 01: Script de Importação para o Bucket ##
+* from dotenv import load_dotenv: A biblioteca dotenv é usada para carregar variáveis de ambiente a partir de um arquivo .env. Isso ajuda a manter as credenciais e configurações sensíveis fora do código-fonte.
 
-<img src="../Evidencias/Execucao_Desafio/script_boto3.png" width="800px">
+* from datetime import datetime: Importa o módulo datetime que permite trabalhar com datas e horas. Ele será utilizado para organizar os arquivos no S3 com base na data atual.
 
-<br>
+* load_dotenv(): Este método carrega as variáveis de ambiente definidas no arquivo .env para o ambiente Python. As variáveis podem incluir credenciais e configurações, como chaves de acesso à AWS, informações do bucket e mais.
 
-Esse código realiza o upload de um arquivo local para um bucket no Amazon S3 usando a biblioteca boto3, que é o SDK oficial da AWS para Python.
+* LOCAL_DIR: Este é o diretório local onde os arquivos a serem enviados para o S3 estão armazenados. No caso do código, o diretório é /app/data.base. Este caminho deve ser alterado conforme o local onde os arquivos estão armazenados em seu ambiente.
 
- 1. Importação da Biblioteca
-O código começa importando a biblioteca boto3, que é o SDK oficial da AWS para Python. Essa biblioteca permite interagir com diversos serviços da AWS, incluindo o Amazon S3, que é usado para armazenar e recuperar dados na nuvem.
+* RAW_ZONE_PATH: Este é o caminho base no S3 onde os arquivos serão armazenados. Ele define uma estrutura de diretórios dentro do bucket, que será usada para organizar os arquivos. A estrutura sugerida é um caminho de dados brutos (raw) seguido da categoria (por exemplo, CSV), e a data do envio será incorporada ao caminho no S3.
 
-2. Inicialização do Cliente S3
-Em seguida, o código cria um cliente para o serviço S3. Isso é feito fornecendo as credenciais de autenticação, incluindo a chave de acesso, a chave secreta e um token de sessão temporário. Esses dados permitem que o cliente S3 se conecte à AWS e autorize operações no serviço.
-
-3. Configuração do Bucket e do Arquivo
-O código define três informações principais: o nome do bucket onde o arquivo será armazenado, o caminho completo do arquivo no sistema local e o nome que o arquivo terá dentro do bucket. Essas informações são essenciais para que o upload seja realizado corretamente.
-
-4. Realização do Upload do Arquivo
-Com os dados configurados, o código tenta fazer o upload do arquivo local para o bucket S3. A função usada gerencia automaticamente a transferência de dados para a nuvem, lidando com detalhes técnicos como autenticação, conexão e upload.
-
-5. Tratamento de Erros
-Caso ocorra algum problema durante o processo de upload, o código captura o erro e exibe uma mensagem informando o motivo da falha. Isso garante que o programa não seja encerrado abruptamente e fornece informações úteis para corrigir o problema.
-
-## Etapa 02: Manipulação do Dataframe ##
-
-## - Filtrar Dados ##
-
-<img src="../Evidencias/Execucao_Desafio/filtrar_dados.png" width="800px">
-
-<br>
-O código organiza e refina os dados para produzir um subconjunto claro e formatado que contém informações relevantes sobre discentes angolanos em mobilidade no campus "JK (Diamantina)"
-
-1. Tratamento de Dados Ausentes
-A primeira etapa remove linhas no DataFrame onde a coluna "paisorigem" contém valores nulos. Isso é importante para garantir que a filtragem subsequente funcione corretamente e que os dados utilizados estejam completos e consistentes.
-
-2. Filtragem de Dados
-O código aplica um filtro para selecionar somente os registros onde o país de origem é "Angola" e o campus de destino inclui "JK (Diamantina)". Essa filtragem reduz os dados ao subconjunto relevante para a análise.
-
-3. Seleção de Colunas Relevantes
-Depois de aplicar o filtro, são escolhidas apenas as colunas que possuem informações essenciais para o objetivo da análise, como o nome do discente, o país de origem, o campus de destino e o período de mobilidade. Isso ajuda a manter o foco nas informações importantes, eliminando colunas desnecessárias.
-
-4. Renomeação de Colunas
-As colunas selecionadas são renomeadas para nomes mais descritivos e amigáveis, facilitando a leitura e compreensão dos dados. Por exemplo, "nomediscente" passa a ser "Nome do Discente" e "paisorigem" é alterado para "País de Origem".
-
-## - Funções de Agregação ##
-
-<img src="../Evidencias/Execucao_Desafio/funcao_agregacao.png" width="800px">
+ <img src="../Evidencias/Execucao_Desafio/script3-py.png" width="600px">
 
 <br>
 
-O código serve para identificar e organizar a frequência de discentes por país de origem. Ele padroniza os valores para garantir precisão na contagem e organiza os resultados em ordem crescente para facilitar a interpretação dos dados.
+2. A função upload_to_s3 recebe dois parâmetros:
+   
+* local_file: O caminho completo do arquivo no sistema local que será enviado para o S3.
+* s3_path: O caminho onde o arquivo será armazenado no S3, incluindo o nome do arquivo.
+boto3.client('s3'): Cria um cliente da AWS S3 usando a biblioteca boto3. Esse cliente é responsável por interagir com o serviço S3 da AWS, permitindo o upload e manipulação de arquivos no S3.
 
-1. Padronização dos Dados na Coluna "paisorigem"
-O código aplica uma série de transformações para padronizar os valores da coluna "paisorigem". Primeiramente, os espaços em branco desnecessários nas extremidades dos textos são removidos. Em seguida, todos os valores são convertidos para letras minúsculas para garantir uniformidade e evitar diferenças causadas por capitalização. Por último, o texto é formatado para a capitalização de título, onde a primeira letra de cada palavra é maiúscula. Isso resulta em dados consistentes e uniformes para facilitar análises posteriores.
+3. Parâmetros de Autenticação:
 
-2. Contagem de Ocorrências por País
-A função value_counts() é usada para contar o número de ocorrências de cada país na coluna "paisorigem". Essa contagem indica a quantidade de vezes que cada país aparece no conjunto de dados.
+* aws_access_key_id e aws_secret_access_key: São as credenciais da AWS necessárias para autenticação no serviço S3. Elas são passadas como variáveis de ambiente e acessadas com os.getenv.
+* aws_session_token: Token temporário necessário quando se usa credenciais temporárias, por exemplo, quando se usa a autenticação multifatorial (MFA) da AWS.
+* region_name: A região AWS onde o bucket S3 está localizado (por exemplo, us-west-2).
 
-3. Ordenação dos Resultados
-Os resultados da contagem são ordenados em ordem crescente, o que organiza os dados de maneira a facilitar a visualização de países menos frequentes primeiro e mais frequentes no final.
+4. Tentativa de Upload:
 
-## - Funções de Condicional ##
+* try: O bloco try tenta realizar o upload do arquivo. Caso algo dê errado durante a execução, ele entra no bloco except.
+* s3.upload_file(local_file, BUCKET_NAME, s3_path): Este método faz o upload do arquivo especificado em local_file para o bucket S3 especificado por BUCKET_NAME, usando o caminho s3_path para armazenar o arquivo dentro do bucket.
+* local_file: Caminho do arquivo no sistema local.
+* BUCKET_NAME: Nome do bucket S3 onde o arquivo será armazenado.
+* s3_path: Caminho dentro do bucket S3 onde o arquivo será salvo. Esse caminho pode incluir subpastas e o nome do arquivo.
+* print(f"Arquivo enviado: {local_file} -> s3://{BUCKET_NAME}/{s3_path}"): Após o upload bem-sucedido, é impresso no console uma mensagem indicando que o arquivo foi enviado com sucesso para o S3.
 
-<img src="../Evidencias/Execucao_Desafio/funcao_condicional.png" width="800px">
+5. Tratamento de Erros:
 
-<br>
+* except Exception as e: Caso ocorra algum erro durante o upload, esse bloco captura a exceção e imprime uma mensagem de erro no console.
+* print(f"Erro ao enviar {local_file}: {e}"): A mensagem de erro é impressa, indicando qual arquivo não pôde ser enviado e o motivo do erro (armazenado na variável e).
 
-Essa etapa adiciona uma informação adicional ao conjunto de dados, permitindo identificar rapidamente os registros relacionados ao ano "2008". Isso é útil para análises ou filtros baseados nesse critério.
-
-1. Preenchimento de Valores Nulos
-A coluna periodomobilidade pode conter valores nulos, que podem causar erros ao aplicar operações de string. Para evitar isso, o método fillna("") é usado para substituir valores nulos por strings vazias (""). Isso garante que a operação subsequente funcione sem interrupções.
-
-2. Verificação de Condição
-O método str.contains("2008") verifica, linha por linha, se o texto "2008" está presente na coluna periodomobilidade. Esse método retorna um valor booleano (True ou False) para cada linha, dependendo se a condição é atendida.
-
-3. Criação de uma Nova Coluna
-Os valores resultantes dessa verificação são armazenados em uma nova coluna chamada inclui_2008. Assim, cada linha do DataFrame passa a ter um indicador que informa se o ano "2008" está mencionado no campo periodomobilidade.
-
-## - Funções de Conversão ##
-
-<img src="../Evidencias/Execucao_Desafio/funcao_conversao.png" width="800px">
+<img src="../Evidencias/Execucao_Desafio/scripy2-py.png" width="600px">
 
 <br>
 
-Esse código é usado para transformar intervalos de anos em listas mais estruturadas e facilmente manipuláveis. Isso facilita análises detalhadas, como identificar anos específicos de mobilidade, fazer comparações ou realizar estatísticas sobre períodos de tempo.<br>
+* A função process_and_upload é responsável por processar os arquivos de um diretório local e fazer o upload de arquivos CSV para o Amazon S3.
+* os.path.exists(LOCAL_DIR): Verifica se o diretório definido em LOCAL_DIR existe. LOCAL_DIR é o caminho para a pasta local onde os arquivos CSV estão armazenados.
+* Se o diretório não existir, imprime uma mensagem de erro e retorna, encerrando a função sem continuar o processo de upload.
+* os.walk(LOCAL_DIR): Percorre recursivamente todos os arquivos e subdiretórios dentro de LOCAL_DIR.
+* if file.endswith('.csv'): Verifica se o arquivo tem a extensão .csv. Caso tenha, ele será processado para upload para o S3.
+* category: Determina se o arquivo pertence à categoria "Movies" ou "Series". Isso é feito verificando se a palavra "movies" está no nome do arquivo, independentemente de maiúsculas ou minúsculas.
+* today = datetime.now(): Obtém a data e hora atual.
+* s3_path: Cria um caminho dinâmico no S3 para o arquivo. O caminho inclui a categoria (Movies ou Series), o ano, o mês e o dia atuais, seguidos pelo nome do arquivo.
+* O formato {today.month:02} e {today.day:02} garante que o mês e o dia sempre apareçam com dois dígitos (ex.: "12" para dezembro e "01" para o primeiro dia do mês).
+* os.path.join(root, file): Combina o diretório atual root com o nome do arquivo `file para formar o caminho completo do arquivo local.
+* print(f"Iniciando upload de {local_file} para s3://{BUCKET_NAME}/{s3_path}"): Exibe uma mensagem no console informando que o upload do arquivo começou.
+* upload_to_s3(local_file, s3_path): Chama a função upload_to_s3, passando o caminho local do arquivo e o caminho do S3 onde o arquivo será armazenado. Essa função é responsável por fazer o upload real do arquivo.
+* if __name__ == "__main__":: Garante que o código dentro desse bloco só seja executado quando o script for executado diretamente, e não quando importado como módulo em outro script.
+* process_and_upload(): Chama a função process_and_upload que começa o processamento e upload dos arquivos.
+* print("Processo concluído!"): Exibe uma mensagem no console quando o processo de upload é concluído.
 
-1. Definição da Função processar_periodo
-A função é criada para processar os valores da coluna periodomobilidade. O objetivo é transformar períodos de mobilidade (normalmente representados como intervalos de anos) em uma lista de anos individuais. A lógica da função é dividida em etapas:
+## Etapa 02: Arquivo .env  ##
 
-- Verificação de valores nulos: A função verifica se o valor da entrada não é nulo usando pd.notnull(periodo). Se o valor for nulo, retorna uma lista vazia ([]).
-- Substituição de separadores: Diferentes formatos de separadores para intervalos de anos (" a ", " – ") são substituídos por um hífen simples ("-"). Isso padroniza o formato do texto.
-- Remoção de espaços: O método strip() remove quaisquer espaços desnecessários no início e no final da string.
-- Divisão do período: O método split('-') divide o texto com base no hífen, separando os anos do intervalo.
-- Limpeza dos anos: A lista resultante é percorrida para remover espaços ao redor de cada elemento.
-Se o valor de entrada for nulo, a função retorna uma lista vazia.
-
-## - Funções de Data ##
-
-<img src="../Evidencias/Execucao_Desafio/funcao_data.png" width="800px">
-
-<br>
-
-1. Definição da Função extrair_ano_inicio
-Essa função é usada para extrair o primeiro ano de um período descrito na coluna periodomobilidade. Ela funciona da seguinte maneira:
-
-- Verificação de valores nulos: Se o valor da entrada for nulo, retorna None.
-- Conversão para string e divisão: Caso o valor não seja nulo, ele é convertido para string (caso não seja já) e dividido com base na vírgula usando o método split(','). O primeiro elemento da divisão (supostamente o ano inicial) é extraído.
-- Tratamento de erros: Se a extração falhar devido a um erro de conversão (por exemplo, o texto não é numérico) ou o índice não existir, a função retorna None.
-
-2. Aplicação da Função ao DataFrame
-- A função extrair_ano_inicio é aplicada à coluna periodomobilidade usando o método apply(). O resultado é armazenado em uma nova coluna chamada ano_inicio. Essa coluna contém o ano inicial extraído de cada registro, ou None caso não seja possível extrair.
-
-3. Limpeza dos Nomes das Colunas
-Os nomes das colunas do DataFrame são tratados para remover espaços em branco indesejados:
-- Remoção de espaços: O método str.strip() elimina espaços no início e no final dos nomes das colunas, garantindo que estejam limpos e padronizados.
-
-4. Remoção de Colunas Não Nomeadas
-As colunas com nomes que começam com "Unnamed" (geralmente criadas por erros ao ler arquivos CSV com cabeçalhos inadequados) são removidas:
-- O método loc[:, ~df.columns.str.contains('^Unnamed')] seleciona todas as colunas, exceto aquelas cujo nome começa com "Unnamed". O caractere ~ atua como um operador de negação.
-
-## - Funções de String ##
-
-<img src="../Evidencias/Execucao_Desafio/funcao_string.png" width="800px">
+<img src="../Evidencias/Execucao_Desafio/arquivo-env.png" width="600px">
 
 <br>
 
-O código tem como objetivo limpar, padronizar e preparar os valores da coluna nomediscente para análises ou relatórios. Ao eliminar valores nulos e garantir que os nomes estejam formatados de maneira consistente, torna-se mais fácil realizar operações como filtragem, agrupamento ou exibição de resultados.
+* O arquivo .env é usado para armazenar variáveis de ambiente de maneira que possam ser facilmente acessadas por seu código, especialmente em projetos que envolvem configurações sensíveis ou de ambiente, como credenciais de acesso e configurações de serviço (no caso, as configurações para o AWS).
 
-1. Verificação da Coluna nomediscente
-Antes de realizar qualquer operação, o código verifica se a coluna nomediscente existe no DataFrame. Isso é importante para evitar erros caso a coluna esteja ausente no conjunto de dados. A verificação é feita com a expressão 'nomediscente' in df.columns.
+* No contexto deste projeto, o arquivo .env serve para fornecer as credenciais e as configurações necessárias para se conectar ao serviço da Amazon Web Services (AWS) e enviar arquivos para um bucket no Amazon S3.
 
-2. Preenchimento de Valores Nulos
-Os valores nulos na coluna nomediscente são substituídos por strings vazias ("") usando o método fillna(''). Isso impede que operações de string falhem ao encontrar valores NaN.
+## Etapa 03: Arquivo Dockerfile  ##
 
-3. Limpeza de Strings
-As operações seguintes são aplicadas para limpar e padronizar os valores da coluna:
-
-- Remoção de espaços: O método str.strip() elimina espaços extras no início e no final de cada nome.
-- Conversão para maiúsculas: O método str.upper() converte todos os caracteres para letras maiúsculas, padronizando a formatação dos nomes.
-
-## - Salvando o DataFrame em um Arquivo CSV ##
-
-<img src="../Evidencias/Execucao_Desafio/salvar_arquivo_csv.png" width="800px">
+<img src="../Evidencias/Execucao_Desafio/arquivo-dockerfile.png" width="600px">
 
 <br>
 
-1. O código usa o método to_csv() para salvar o DataFrame resultante em um arquivo CSV.
+* FROM python:3.9-slim: Esta linha especifica que a imagem base será a versão 3.9 do Python, mas com uma versão "slim" (menor e otimizada). A partir dessa imagem, o Docker criará a nova imagem.
+* WORKDIR /app: Define o diretório de trabalho dentro do contêiner como /app. Todos os comandos seguintes (como COPY e CMD) serão executados dentro desse diretório.
+* COPY .env /app/.env: Copia o arquivo .env da máquina local para dentro do contêiner no diretório /app. Este arquivo contém as variáveis de ambiente necessárias para a configuração do AWS (como chaves de acesso e o nome do bucket).
+* COPY upload_s3.py ./: Copia o script Python upload_s3.py para o contêiner. Esse script será responsável pelo upload dos arquivos para o S3.
+* RUN pip install boto3 python-dotenv: Instala as dependências necessárias para o script Python. Aqui, o script utiliza:
+* VOLUME ["/app/data.base"]: Cria um volume no Docker que aponta para o diretório /app/data.base dentro do contêiner. Isso permite que dados possam ser compartilhados entre o contêiner e o sistema local. Esse volume deve ser montado na execução do contêiner para que os dados (como arquivos CSV) possam ser acessados de fora do contêiner.
+* CMD ["python", "upload_s3.py"]: Define o comando que será executado por padrão quando o contêiner for iniciado. Neste caso, ele executa o script upload_s3.py com o interpretador Python.
 
-- index=False: Esse parâmetro indica que o índice do DataFrame não será incluído no arquivo CSV. Isso é útil quando o índice não tem relevância como uma coluna nos dados salvos.
+## Etapa 03: Criação do Container  ##
 
-## - Finalização do Bucket ##
+<img src="../Evidencias/Execucao_Desafio/criacao-docker.png" width="600px">
 
-<img src="../Evidencias/Execucao_Desafio/bucket_final.png" width="800px">
+* Ao rodar o Dockerfile, o objetivo é criar uma imagem do Docker que possa ser utilizada para rodar um container contendo todos os componentes necessários para executar o seu script Python, incluindo o upload dos arquivos para o Amazon S3. 
+
+## Etapa 04: Finalização  ##
+
+A finalização da execução do container ocorre após o script Python (upload_s3.py) ser executado dentro do contêiner, realizando o processo de upload dos arquivos para o S3. Como apresentado.
 
 <br>
-
-Após a execução do arquivo de manipulação, enivei os arquivos do desafio para o bucket, sendo assim finalizando o desafio.
+<img src="../Evidencias/Execucao_Desafio/bucket-sprint06.png" width="600px">
+<img src="../Evidencias/Execucao_Desafio/pasta-csv.png" width="600px">
+<img src="../Evidencias/Execucao_Desafio/pasta-movies.png" width="600px">
+<img src="../Evidencias/Execucao_Desafio/pasta-series.png" width="600px">
+<br>
