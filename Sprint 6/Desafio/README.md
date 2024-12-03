@@ -16,7 +16,7 @@ A análise é baseada em um banco de dados de filmes com informações detalhada
 * Artistas que trabalharam em mais filmes ("títulos mais conhecidos") tendem a estar associados a filmes com maiores notas médias?
 
 
-# Objetivo do Desafio #
+# Objetivo do Desafio da Sprint #
 
 O objetivo do desafio é automatizar o upload de arquivos CSV para um bucket S3 usando um container Docker. Ele testa habilidades em criação e gestão de containers, integração com AWS, organização de dados na nuvem e automação de processos com Python.
 
