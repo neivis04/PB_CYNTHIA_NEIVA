@@ -1,5 +1,22 @@
+# Objetivo do Desafio Geral e Perguntas para o Dashboard #
 
-# Objetivo do Desafio #
+O objetivo dessa análise é explorar e entender padrões, tendências e fatores que influenciam a avaliação e a popularidade de filmes de comédia, utilizando os dados fornecidos. A análise busca responder perguntas-chave que podem guiar tomadas de decisão estratégicas na indústria cinematográfica, como identificar características associadas a filmes de sucesso ou explorar discrepâncias nas avaliações.
+
+A análise é baseada em um banco de dados de filmes com informações detalhadas sobre títulos, gêneros, avaliações (nota média e número de votos), duração, artistas envolvidos, seus papéis e características, como profissão e ano de nascimento. Ela se concentra em examinar relações entre essas variáveis para obter insights significativos.
+
+1. Análise de Tendências e Popularidade
+* Quais fatores (gênero, duração, ano de lançamento) têm maior correlação com altas notas médias e número de votos?
+* Existe um período específico em que um determinado gênero se destacou em termos de avaliação?
+* Diretores ou artistas com maior número de títulos conhecidos contribuem para um aumento significativo na nota média ou no número de votos dos filmes?
+
+2. Avaliação Geral dos Filmes
+* Há diferenças significativas entre a avaliação de filmes curtos (menos de 90 minutos) e filmes longos (mais de 120 minutos)?
+
+3. Impacto dos Artistas
+* Artistas que trabalharam em mais filmes ("títulos mais conhecidos") tendem a estar associados a filmes com maiores notas médias?
+
+
+# Objetivo do Desafio da Sprint #
 
 O objetivo do desafio é automatizar o upload de arquivos CSV para um bucket S3 usando um container Docker. Ele testa habilidades em criação e gestão de containers, integração com AWS, organização de dados na nuvem e automação de processos com Python.
 

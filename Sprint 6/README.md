@@ -18,8 +18,15 @@ O objetivo da execução do container é automatizar o processo de upload de arq
 
 # Certificados
 
-- Certificado da AWS disponibilizado na Sprint
-<img src="../Certificados/img1.png" width="600px">
+<img src="Certificados/img1.png" width="600px">
+<img src="Certificados/img2.png" width="600px">
+<img src="Certificados/img3.png" width="600px">
+<img src="Certificados/img4.png" width="600px">
+<img src="Certificados/img5.png" width="600px">
+<img src="Certificados/img6.png" width="600px">
+<img src="Certificados/img7.png" width="600px">
+<img src="Certificados/img8.png" width="600px">
+<img src="Certificados/img9.png" width="600px">
 
-- Certificado da AWS disponibilizado na Sprint
-![Curso Economia na Nuvem](Certificados/Credenciamento_Tecnico.png)
+
+
