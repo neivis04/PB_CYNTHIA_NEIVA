@@ -1,116 +1,124 @@
 
 # Objetivo do Desafio #
 
-O objetivo do desafio é automatizar o upload de arquivos CSV para um bucket S3 usando um container Docker. Ele testa habilidades em criação e gestão de containers, integração com AWS, organização de dados na nuvem e automação de processos com Python.
+O desafio visa demonstrar a habilidade de automatizar o processo de coleta, processamento e upload de dados para um Data Lake (S3), utilizando ferramentas e serviços AWS em conjunto, de modo a criar um fluxo eficiente e escalável para o armazenamento e o processamento de dados.
 
 ## Etapa 01: Script em python para automação  ##
 
- <img src="../Evidencias/Execucao_Desafio/script1-py.png" width="600px">
+ <img src="../Evidencias/Execucao_Desafio/cod.1.png" width="400px">
 
  <br>
 
-1. Importação de Bibliotecas
-* import os: A biblioteca os fornece funcionalidades para interagir com o sistema operacional, como acessar variáveis de ambiente e manipular caminhos de arquivos.
+1. Carregamento de Variáveis de Ambiente:
+* Utiliza a função load_dotenv() para carregar variáveis de ambiente armazenadas em um arquivo .env. Esse arquivo contém dados sensíveis, como chaves de API e credenciais da AWS, e é utilizado para manter a segurança do código.
 
-* import boto3: boto3 é a biblioteca oficial da AWS para Python. Ela é usada para interagir com serviços da AWS, como o S3, permitindo o upload e download de arquivos, entre outras operações.
+2. Configuração da API do TMDB:
+* A chave de API do TMDB (API_KEY) é carregada a partir das variáveis de ambiente. Ela será usada para autenticar requisições à API.
+CAs URLs base para consultar filmes (BASE_URL_MOVIE) e séries de TV (BASE_URL_TV) do TMDB são definidas. Essas URLs são utilizadas para construir as requisições para a API, buscando informações sobre filmes e séries.
 
-* from dotenv import load_dotenv: A biblioteca dotenv é usada para carregar variáveis de ambiente a partir de um arquivo .env. Isso ajuda a manter as credenciais e configurações sensíveis fora do código-fonte.
+3. Configuração da AWS:
+* As variáveis relacionadas à configuração da AWS, como as chaves de acesso (AWS_ACCESS_KEY e AWS_SECRET_KEY), o token de sessão (SESSION_TOKEN), a região da AWS (AWS_REGION), e o nome do bucket S3 (BUCKET_NAME), são carregadas a partir das variáveis de ambiente. Essas credenciais permitem que o código se conecte aos serviços da AWS de forma segura.
 
-* from datetime import datetime: Importa o módulo datetime que permite trabalhar com datas e horas. Ele será utilizado para organizar os arquivos no S3 com base na data atual.
+4. Criação do Cliente S3:
+* A função boto3.client() é utilizada para criar um cliente para o serviço S3 da AWS. Esse cliente permite que o código interaja com o Amazon S3, o serviço de armazenamento de objetos da AWS, utilizando as credenciais carregadas anteriormente.
+* O cliente S3 será utilizado para realizar operações, como o upload de arquivos, para o bucket especificado.
 
-* load_dotenv(): Este método carrega as variáveis de ambiente definidas no arquivo .env para o ambiente Python. As variáveis podem incluir credenciais e configurações, como chaves de acesso à AWS, informações do bucket e mais.
 
-* LOCAL_DIR: Este é o diretório local onde os arquivos a serem enviados para o S3 estão armazenados. No caso do código, o diretório é /app/data.base. Este caminho deve ser alterado conforme o local onde os arquivos estão armazenados em seu ambiente.
+ <img src="../Evidencias/Execucao_Desafio/cod.2.png" width="400px">
 
-* RAW_ZONE_PATH: Este é o caminho base no S3 onde os arquivos serão armazenados. Ele define uma estrutura de diretórios dentro do bucket, que será usada para organizar os arquivos. A estrutura sugerida é um caminho de dados brutos (raw) seguido da categoria (por exemplo, CSV), e a data do envio será incorporada ao caminho no S3.
+1. Definição do Diretório Local:
+* A variável LOCAL_DIR define o diretório onde os arquivos JSON serão armazenados localmente. O caminho fornecido refere-se a uma pasta específica no computador do usuário.
+* A função os.makedirs() cria o diretório especificado, se ele não existir, garantindo que a estrutura de pastas esteja pronta para armazenar os arquivos.
+  
+2. Caminho da Camada RAW no S3:
+* A variável RAW_ZONE_PATH especifica o caminho onde os arquivos JSON serão armazenados dentro do bucket S3. A camada RAW refere-se ao armazenamento bruto de dados, sem processamento adicional.
+* O caminho indicado é data-lake-da-cynthia/raw/TMDB/JSON, e os dados serão organizados dentro dessa estrutura de diretórios no S3.
+  
+3. Parâmetros Base para Busca na API:
+* A variável BASE_PARAMS contém os parâmetros padrão para as requisições à API TMDB. Esses parâmetros incluem:
+api_key: A chave da API para autenticação.
+* language: Define o idioma das respostas da API como português do Brasil (pt-BR).
+* include_adult: Configura a API para excluir conteúdo para adultos.
+* include_video: Exclui vídeos relacionados.
+* with_genres: Filtra filmes e séries que pertencem aos gêneros "Animação" (16) e "Comédia" (35).
+* primary_release_date.lte: Define o filtro para filmes e séries com data de lançamento até 31 de dezembro de 2023.
+* page: Inicialmente definido como 1, indica que os resultados serão solicitados a partir da primeira página de resultados.
+  
+4. Função fetch_data para Buscar Dados da API TMDB:
+* A função fetch_data() é responsável por buscar os dados da API TMDB. Ela aceita dois parâmetros:
+* url: A URL da API (seja de filmes ou séries) que será usada para fazer a requisição.
+tipo: Um parâmetro para identificar se os dados estão relacionados a filmes ou séries, que pode ser utilizado para definir a origem dos dados.
+* Dentro da função, um loop é iniciado para buscar os dados até que pelo menos 100 registros sejam obtidos. A cada iteração, os parâmetros de requisição são copiados da variável BASE_PARAMS, mas o número da página (page) é incrementado, permitindo a navegação pelas páginas de resultados da API.
+* O código não está completo, mas o objetivo principal é fazer múltiplas requisições até que 100 registros de filmes ou séries sejam coletados, conforme indicado no critério do código.
 
- <img src="../Evidencias/Execucao_Desafio/script3-py.png" width="600px">
+ <img src="../Evidencias/Execucao_Desafio/cod.3.png" width="400px">
 
-<br>
+1. Verificação do Status da Requisição (HTTP 200):
+* A condição if response.status_code == 200: verifica se a resposta da API foi bem-sucedida, ou seja, se o status code é 200, o que significa que a requisição foi processada corretamente e os dados estão disponíveis.
+* Caso o código da resposta seja diferente de 200, o código imprime uma mensagem de erro, indicando que houve um problema na requisição, com o status code da resposta.
+  
+2. Extração dos Dados da Resposta:
+* Quando a resposta é bem-sucedida, o método .json() é chamado no objeto response, que converte o conteúdo da resposta (geralmente em formato JSON) para um dicionário Python.
+* A partir desse dicionário, os dados de interesse são extraídos usando .get("results", []). Esse método tenta acessar o campo "results" da resposta JSON, que contém os registros dos filmes ou séries. Se esse campo não existir, será retornada uma lista vazia, evitando erros.
+  
+3. Adicionar Registros até 100:
+* Um laço for é iniciado para iterar sobre os resultados da busca, ou seja, sobre os filmes ou séries recebidos da API.
+Dentro do laço, é verificado se a quantidade de registros já coletados (len(records)) é menor que 100. Se for, o registro atual (result) é adicionado à lista records.
+* Se já houver 100 registros, o laço é interrompido com o comando break, o que impede a coleta de mais registros, atendendo ao critério de coletar no máximo 100 itens.
+  
+4. Impressão de Informações de Progresso:
+* Após cada página de resultados ser processada, o código imprime uma mensagem indicando o tipo de dados (filmes ou séries), o número da página atual (page), e o total de registros coletados até o momento (len(records)).
+  
+5. Controle de Páginas:
+* O número da página (page) é incrementado, passando para a próxima página de resultados.
+* A verificação if page > data.get("total_pages", 1): verifica se o número da página ultrapassou o total de páginas disponíveis na resposta. Caso tenha chegado ao final das páginas, o laço é interrompido com o break.
+  
+6. Retorno dos Registros Coletados:
+* Após o término da coleta de dados, seja por atingir 100 registros ou por ter processado todas as páginas, a função retorna a lista records, que contém os registros de filmes ou séries coletados.
 
-2. A função upload_to_s3 recebe dois parâmetros:
-   
-* local_file: O caminho completo do arquivo no sistema local que será enviado para o S3.
-* s3_path: O caminho onde o arquivo será armazenado no S3, incluindo o nome do arquivo.
-boto3.client('s3'): Cria um cliente da AWS S3 usando a biblioteca boto3. Esse cliente é responsável por interagir com o serviço S3 da AWS, permitindo o upload e manipulação de arquivos no S3.
+<img src="../Evidencias/Execucao_Desafio/cod.4.png" width="400px">
 
-3. Parâmetros de Autenticação:
+1. Função save_to_local(data, tipo)
+* A função recebe dois parâmetros: data (os dados a serem salvos) e tipo (o tipo de dados, como "filmes" ou "series").
+* A data atual é formatada no formato "YYYY-MM-DD" e é utilizada para criar o nome do arquivo, garantindo que o nome seja único por dia.
+* O caminho do arquivo é determinado pela variável LOCAL_DIR, que indica o diretório onde o arquivo será salvo.
+* O arquivo é aberto no modo de escrita ("w") com a codificação UTF-8, e os dados são salvos no formato JSON, usando json.dump(). A função json.dump() é configurada para garantir que os caracteres especiais sejam corretamente salvos e que o JSON seja bem formatado.
+* Após salvar o arquivo, a função imprime uma mensagem confirmando o sucesso da operação e retorna o caminho completo do arquivo.
+  
+2. Função upload_to_s3(local_file, s3_path)
+* A função recebe dois parâmetros: local_file (o caminho do arquivo local) e s3_path (o caminho do arquivo no bucket do S3).
+* A função tenta fazer o upload usando o cliente S3 (s3_client.upload_file()), que é configurado anteriormente com as credenciais da AWS.
+* Se o upload for bem-sucedido, é impressa uma mensagem indicando o sucesso. Se ocorrer um erro, a exceção é capturada e uma mensagem de erro é exibida.
+  
+3. Função lambda_handler(event=None, context=None)
+* A função começa com uma mensagem indicando que o processo de coleta de dados e upload para o S3 está sendo iniciado.
+Coleta de dados de filmes:
+* A função fetch_data(BASE_URL_MOVIE, "filmes") é chamada para buscar os dados de filmes da API TMDB. O tipo "filmes" é passado como parâmetro para ajudar a identificar os dados.
+* O resultado da coleta de filmes é salvo localmente com a função save_to_local(filmes, "filmes"), e o caminho do arquivo gerado é armazenado em local_filmes.
+  
+4. Coleta de dados de séries:
+* De forma semelhante, a função fetch_data(BASE_URL_TV, "series") coleta os dados de séries da API TMDB.
+* Os dados das séries são salvos localmente em um arquivo JSON com a função save_to_local(series, "series"), e o caminho do arquivo gerado é armazenado em local_series.
+* Após a coleta e salvamento dos arquivos locais, o próximo passo seria, em uma versão completa do código, fazer o upload desses arquivos para o S3 (isso não está totalmente mostrado no trecho, mas presumivelmente seria realizado após a coleta e salvamento).
 
-* aws_access_key_id e aws_secret_access_key: São as credenciais da AWS necessárias para autenticação no serviço S3. Elas são passadas como variáveis de ambiente e acessadas com os.getenv.
-* aws_session_token: Token temporário necessário quando se usa credenciais temporárias, por exemplo, quando se usa a autenticação multifatorial (MFA) da AWS.
-* region_name: A região AWS onde o bucket S3 está localizado (por exemplo, us-west-2).
+<img src="../Evidencias/Execucao_Desafio/cod.5.png" width="400px">
 
-4. Tentativa de Upload:
+1. Função save_to_local(data, tipo)
+* A função recebe dois parâmetros: data (os dados a serem salvos) e tipo (o tipo de dados, como "filmes" ou "series").
+* A data atual é formatada no formato "YYYY-MM-DD" e é utilizada para criar o nome do arquivo, garantindo que o nome seja único por dia.
+* O caminho do arquivo é determinado pela variável LOCAL_DIR, que indica o diretório onde o arquivo será salvo.
+* O arquivo é aberto no modo de escrita ("w") com a codificação UTF-8, e os dados são salvos no formato JSON, usando json.dump(). A função json.dump() é configurada para garantir que os caracteres especiais sejam corretamente salvos e que o JSON seja bem formatado.
+* Após salvar o arquivo, a função imprime uma mensagem confirmando o sucesso da operação e retorna o caminho completo do arquivo.
 
-* try: O bloco try tenta realizar o upload do arquivo. Caso algo dê errado durante a execução, ele entra no bloco except.
-* s3.upload_file(local_file, BUCKET_NAME, s3_path): Este método faz o upload do arquivo especificado em local_file para o bucket S3 especificado por BUCKET_NAME, usando o caminho s3_path para armazenar o arquivo dentro do bucket.
-* local_file: Caminho do arquivo no sistema local.
-* BUCKET_NAME: Nome do bucket S3 onde o arquivo será armazenado.
-* s3_path: Caminho dentro do bucket S3 onde o arquivo será salvo. Esse caminho pode incluir subpastas e o nome do arquivo.
-* print(f"Arquivo enviado: {local_file} -> s3://{BUCKET_NAME}/{s3_path}"): Após o upload bem-sucedido, é impresso no console uma mensagem indicando que o arquivo foi enviado com sucesso para o S3.
+2. Função upload_to_s3(local_file, s3_path)
+* A função recebe dois parâmetros: local_file (o caminho do arquivo local) e s3_path (o caminho do arquivo no bucket do S3).
+* A função tenta fazer o upload usando o cliente S3 (s3_client.upload_file()), que é configurado anteriormente com as credenciais da AWS.
+* Se o upload for bem-sucedido, é impressa uma mensagem indicando o sucesso. Se ocorrer um erro, a exceção é capturada e uma mensagem de erro é exibida.
 
-5. Tratamento de Erros:
+3. Função lambda_handler(event=None, context=None)
+* A função fetch_data(BASE_URL_MOVIE, "filmes") é chamada para buscar os dados de filmes da API TMDB. O tipo "filmes" é passado como parâmetro para ajudar a identificar os dados.
+* O resultado da coleta de filmes é salvo localmente com a função save_to_local(filmes, "filmes"), e o caminho do arquivo gerado é armazenado em local_filmes.
 
-* except Exception as e: Caso ocorra algum erro durante o upload, esse bloco captura a exceção e imprime uma mensagem de erro no console.
-* print(f"Erro ao enviar {local_file}: {e}"): A mensagem de erro é impressa, indicando qual arquivo não pôde ser enviado e o motivo do erro (armazenado na variável e).
-
-<img src="../Evidencias/Execucao_Desafio/scripy2-py.png" width="600px">
-
-<br>
-
-* A função process_and_upload é responsável por processar os arquivos de um diretório local e fazer o upload de arquivos CSV para o Amazon S3.
-* os.path.exists(LOCAL_DIR): Verifica se o diretório definido em LOCAL_DIR existe. LOCAL_DIR é o caminho para a pasta local onde os arquivos CSV estão armazenados.
-* Se o diretório não existir, imprime uma mensagem de erro e retorna, encerrando a função sem continuar o processo de upload.
-* os.walk(LOCAL_DIR): Percorre recursivamente todos os arquivos e subdiretórios dentro de LOCAL_DIR.
-* if file.endswith('.csv'): Verifica se o arquivo tem a extensão .csv. Caso tenha, ele será processado para upload para o S3.
-* category: Determina se o arquivo pertence à categoria "Movies" ou "Series". Isso é feito verificando se a palavra "movies" está no nome do arquivo, independentemente de maiúsculas ou minúsculas.
-* today = datetime.now(): Obtém a data e hora atual.
-* s3_path: Cria um caminho dinâmico no S3 para o arquivo. O caminho inclui a categoria (Movies ou Series), o ano, o mês e o dia atuais, seguidos pelo nome do arquivo.
-* O formato {today.month:02} e {today.day:02} garante que o mês e o dia sempre apareçam com dois dígitos (ex.: "12" para dezembro e "01" para o primeiro dia do mês).
-* os.path.join(root, file): Combina o diretório atual root com o nome do arquivo `file para formar o caminho completo do arquivo local.
-* print(f"Iniciando upload de {local_file} para s3://{BUCKET_NAME}/{s3_path}"): Exibe uma mensagem no console informando que o upload do arquivo começou.
-* upload_to_s3(local_file, s3_path): Chama a função upload_to_s3, passando o caminho local do arquivo e o caminho do S3 onde o arquivo será armazenado. Essa função é responsável por fazer o upload real do arquivo.
-* if __name__ == "__main__":: Garante que o código dentro desse bloco só seja executado quando o script for executado diretamente, e não quando importado como módulo em outro script.
-* process_and_upload(): Chama a função process_and_upload que começa o processamento e upload dos arquivos.
-* print("Processo concluído!"): Exibe uma mensagem no console quando o processo de upload é concluído.
-
-## Etapa 02: Arquivo .env  ##
-
-<img src="../Evidencias/Execucao_Desafio/arquivo-env.png" width="600px">
-
-<br>
-
-* O arquivo .env é usado para armazenar variáveis de ambiente de maneira que possam ser facilmente acessadas por seu código, especialmente em projetos que envolvem configurações sensíveis ou de ambiente, como credenciais de acesso e configurações de serviço (no caso, as configurações para o AWS).
-
-* No contexto deste projeto, o arquivo .env serve para fornecer as credenciais e as configurações necessárias para se conectar ao serviço da Amazon Web Services (AWS) e enviar arquivos para um bucket no Amazon S3.
-
-## Etapa 03: Arquivo Dockerfile  ##
-
-<img src="../Evidencias/Execucao_Desafio/arquivo-dockerfile.png" width="600px">
-
-<br>
-
-* FROM python:3.9-slim: Esta linha especifica que a imagem base será a versão 3.9 do Python, mas com uma versão "slim" (menor e otimizada). A partir dessa imagem, o Docker criará a nova imagem.
-* WORKDIR /app: Define o diretório de trabalho dentro do contêiner como /app. Todos os comandos seguintes (como COPY e CMD) serão executados dentro desse diretório.
-* COPY .env /app/.env: Copia o arquivo .env da máquina local para dentro do contêiner no diretório /app. Este arquivo contém as variáveis de ambiente necessárias para a configuração do AWS (como chaves de acesso e o nome do bucket).
-* COPY upload_s3.py ./: Copia o script Python upload_s3.py para o contêiner. Esse script será responsável pelo upload dos arquivos para o S3.
-* RUN pip install boto3 python-dotenv: Instala as dependências necessárias para o script Python. Aqui, o script utiliza:
-* VOLUME ["/app/data.base"]: Cria um volume no Docker que aponta para o diretório /app/data.base dentro do contêiner. Isso permite que dados possam ser compartilhados entre o contêiner e o sistema local. Esse volume deve ser montado na execução do contêiner para que os dados (como arquivos CSV) possam ser acessados de fora do contêiner.
-* CMD ["python", "upload_s3.py"]: Define o comando que será executado por padrão quando o contêiner for iniciado. Neste caso, ele executa o script upload_s3.py com o interpretador Python.
-
-## Etapa 03: Criação do Container  ##
-
-<img src="../Evidencias/Execucao_Desafio/criacao-docker.png" width="600px">
-
-* Ao rodar o Dockerfile, o objetivo é criar uma imagem do Docker que possa ser utilizada para rodar um container contendo todos os componentes necessários para executar o seu script Python, incluindo o upload dos arquivos para o Amazon S3. 
-
-## Etapa 04: Finalização  ##
-
-A finalização da execução do container ocorre após o script Python (upload_s3.py) ser executado dentro do contêiner, realizando o processo de upload dos arquivos para o S3. Como apresentado.
-
-<br>
-<img src="../Evidencias/Execucao_Desafio/bucket-sprint06.png" width="600px">
-<img src="../Evidencias/Execucao_Desafio/pasta-csv.png" width="600px">
-<img src="../Evidencias/Execucao_Desafio/pasta-movies.png" width="600px">
-<img src="../Evidencias/Execucao_Desafio/pasta-series.png" width="600px">
-<br>
+4. Coleta de dados de séries:
+* De forma semelhante, a função fetch_data(BASE_URL_TV, "series") coleta os dados de séries da API TMDB.
+* Os dados das séries são salvos localmente em um arquivo JSON com a função save_to_local(series, "series"), e o caminho do arquivo gerado é armazenado em local_series.
