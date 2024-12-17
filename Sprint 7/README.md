@@ -1,25 +1,9 @@
 # Objetivo da Sprint
 
-O objetivo da execução do container é automatizar o processo de upload de arquivos locais (como arquivos CSV) para o Amazon S3. Especificamente, a execução do container tem os seguintes objetivos:
+O objetivo do desafio é demonstrar a capacidade de integrar e processar dados em um ambiente de nuvem (AWS), utilizando diferentes tecnologias e ferramentas para:
 
-* Rodar o script Python: O container executa o script upload_s3.py, que foi copiado para o contêiner durante a construção da imagem. Esse script é responsável por localizar arquivos CSV no diretório local e fazer o upload desses arquivos para o S3, em um formato organizado e categorizado.
-
-* Carregar variáveis de ambiente: O container também carrega as variáveis de ambiente do arquivo .env (que contém credenciais da AWS, como chave de acesso, chave secreta, região e o nome do bucket). Essas variáveis são usadas pelo script Python para autenticar a conexão com o AWS S3.
-
-* Mapear diretórios locais para o container: Ao executar o container, um volume local é montado, permitindo que o container acesse os arquivos presentes em um diretório específico do sistema operacional local (no seu caso, o diretório data.base). Isso permite que o script Python trabalhe com os arquivos locais e os envie para o S3.
-
-* Fazer o upload de arquivos para o S3: O objetivo final é fazer o upload dos arquivos CSV para o bucket S3, criando uma estrutura de pastas organizada, com base em categorias (como "Movies" ou "Series"), e usando a data atual para organizar os arquivos no S3.
-
-# Exercícios
-
-1. [Exercicio](https://github.com/neivis04/PB_CYNTHIA_NEIVA/tree/main/Sprint%206/Exercicios/Exercicio_Lab_AWS_S3)
-
-4. [Exercicio](https://github.com/neivis04/PB_CYNTHIA_NEIVA/tree/main/Sprint%206/Exercicios/Exercicio_Lab_Lambda)
-
-# Certificados
-
-- Certificado da AWS disponibilizado na Sprint
-<img src="../Certificados/img1.png" width="600px">
-
-- Certificado da AWS disponibilizado na Sprint
-![Curso Economia na Nuvem](Certificados/Credenciamento_Tecnico.png)
+* Coletar dados de uma API externa (no caso, a TMDB — The Movie Database) com filtros específicos, como gênero de filmes (comédia e animação), e coletar até 100 registros de cada vez.
+* Processar esses dados (gerando arquivos JSON contendo informações sobre filmes e séries).
+* Subir esses arquivos para um bucket S3 em um Data Lake em uma camada Raw (ou camada bruta).
+* Automatizar o processo de execução e envio utilizando o AWS Lambda, de forma a permitir a execução do processo de upload de maneira eficiente e sem a necessidade de infraestrutura adicional.
+* Manipulação e armazenamento de dados em um ambiente escalável e seguro, usando práticas comuns em ambientes de big data.
