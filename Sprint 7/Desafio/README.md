@@ -23,6 +23,7 @@ CAs URLs base para consultar filmes (BASE_URL_MOVIE) e séries de TV (BASE_URL_T
 * A função boto3.client() é utilizada para criar um cliente para o serviço S3 da AWS. Esse cliente permite que o código interaja com o Amazon S3, o serviço de armazenamento de objetos da AWS, utilizando as credenciais carregadas anteriormente.
 * O cliente S3 será utilizado para realizar operações, como o upload de arquivos, para o bucket especificado.
 
+## Etapa 01: Script em python para automação  ##
 
  <img src="../Evidencias/Execucao_Desafio/cod.2.png" width="400px">
 
@@ -51,8 +52,11 @@ tipo: Um parâmetro para identificar se os dados estão relacionados a filmes ou
 * Dentro da função, um loop é iniciado para buscar os dados até que pelo menos 100 registros sejam obtidos. A cada iteração, os parâmetros de requisição são copiados da variável BASE_PARAMS, mas o número da página (page) é incrementado, permitindo a navegação pelas páginas de resultados da API.
 * O código não está completo, mas o objetivo principal é fazer múltiplas requisições até que 100 registros de filmes ou séries sejam coletados, conforme indicado no critério do código.
 
+## Etapa 01: Script em python para automação  ##
+
  <img src="../Evidencias/Execucao_Desafio/cod.3.png" width="400px">
 
+## 
 1. Verificação do Status da Requisição (HTTP 200):
 * A condição if response.status_code == 200: verifica se a resposta da API foi bem-sucedida, ou seja, se o status code é 200, o que significa que a requisição foi processada corretamente e os dados estão disponíveis.
 * Caso o código da resposta seja diferente de 200, o código imprime uma mensagem de erro, indicando que houve um problema na requisição, com o status code da resposta.
@@ -75,6 +79,9 @@ Dentro do laço, é verificado se a quantidade de registros já coletados (len(r
   
 6. Retorno dos Registros Coletados:
 * Após o término da coleta de dados, seja por atingir 100 registros ou por ter processado todas as páginas, a função retorna a lista records, que contém os registros de filmes ou séries coletados.
+
+
+## Etapa 01: Script em python para automação  ##
 
 <img src="../Evidencias/Execucao_Desafio/cod.4.png" width="400px">
 
@@ -101,6 +108,8 @@ Coleta de dados de filmes:
 * Os dados das séries são salvos localmente em um arquivo JSON com a função save_to_local(series, "series"), e o caminho do arquivo gerado é armazenado em local_series.
 * Após a coleta e salvamento dos arquivos locais, o próximo passo seria, em uma versão completa do código, fazer o upload desses arquivos para o S3 (isso não está totalmente mostrado no trecho, mas presumivelmente seria realizado após a coleta e salvamento).
 
+## Etapa 01: Script em python para automação  ##
+
 <img src="../Evidencias/Execucao_Desafio/cod.5.png" width="400px">
 
 1. Função save_to_local(data, tipo)
@@ -122,3 +131,35 @@ Coleta de dados de filmes:
 4. Coleta de dados de séries:
 * De forma semelhante, a função fetch_data(BASE_URL_TV, "series") coleta os dados de séries da API TMDB.
 * Os dados das séries são salvos localmente em um arquivo JSON com a função save_to_local(series, "series"), e o caminho do arquivo gerado é armazenado em local_series.
+
+## Etapa 01: Processo executado ##
+
+<img src="../Evidencias/Execucao_Desafio/processo,executado.png" width="600px">
+
+* As mensagens de "Página X processada" indicam que a coleta de dados da API TMDB foi realizada com sucesso.
+* "Arquivo salvo localmente" indica que os dados foram salvos no diretório local.
+* "Arquivo enviado" mostra o progresso do upload dos arquivos para o bucket S3.
+* Por fim, o processo é finalizado com uma mensagem indicando sucesso no processo.
+
+## Etapa 01: Resultado Final ##
+
+<img src="../Evidencias/Execucao_Desafio/json.filmes.tmdb.png" width="400px">
+
+Ao executar o código, terá um arquivo JSON contendo até 100 filmes (ou o número máximo retornado pela API, com base na configuração de paginação).
+Cada filme terá informações detalhadas, como título, descrição, data de lançamento, avaliação, gêneros, entre outras.
+Este arquivo JSON pode ser usado para análises, recomendações, ou pode ser armazenado e enviado para outras plataformas, como um Data Lake ou um Bucket S3, conforme sua necessidade.
+
+<img src="../Evidencias/Execucao_Desafio/json.serie.tmdb.png" width="400px">
+
+O arquivo JSON conterá informações de até 100 séries, dependendo da quantidade disponível e da configuração da API.
+Cada série será representada com detalhes como título, sinopse, data de estreia, número de temporadas, avaliações, e outros dados importantes.
+Ao executar o código, terá uma lista completa de séries relevantes para a consulta realizada, podendo armazená-las para análises, exibições, ou até mesmo exportá-las para outros sistemas como um Data Lake ou S3.
+
+## Etapa 02: Envio para o Bucket ##
+
+<img src="../Evidencias/Execucao_Desafio/json.bucket.filmes.png" width="400px">
+<br>
+<br>
+<img src="../Evidencias/Execucao_Desafio/json.bucket.series.png" width="400px">
+<br>
+1. Ao enviar os dados para o bucket S3, o processo geralmente envolve a transferência dos arquivos localmente gerados (como os arquivos JSON com informações de filmes e séries) para o serviço de armazenamento da AWS.
