@@ -112,25 +112,25 @@ Coleta de dados de filmes:
 
 <img src="../Evidencias/Execucao_Desafio/cod.5.png" width="400px">
 
-1. Função save_to_local(data, tipo)
-* A função recebe dois parâmetros: data (os dados a serem salvos) e tipo (o tipo de dados, como "filmes" ou "series").
-* A data atual é formatada no formato "YYYY-MM-DD" e é utilizada para criar o nome do arquivo, garantindo que o nome seja único por dia.
-* O caminho do arquivo é determinado pela variável LOCAL_DIR, que indica o diretório onde o arquivo será salvo.
-* O arquivo é aberto no modo de escrita ("w") com a codificação UTF-8, e os dados são salvos no formato JSON, usando json.dump(). A função json.dump() é configurada para garantir que os caracteres especiais sejam corretamente salvos e que o JSON seja bem formatado.
-* Após salvar o arquivo, a função imprime uma mensagem confirmando o sucesso da operação e retorna o caminho completo do arquivo.
+1. Definir o caminho no S3:
+* A estrutura do caminho do bucket S3 é definida com base na camada RAW_ZONE_PATH.
+* É incluída uma subpasta para filmes e outra para séries, seguindo o formato de diretórios baseados na data atual (ano, mês e dia).
+* O nome do arquivo salvo localmente (local_filmes ou local_series) é extraído e incorporado no caminho para o S3. Isso assegura que os arquivos sejam organizados cronologicamente no bucket.
 
-2. Função upload_to_s3(local_file, s3_path)
-* A função recebe dois parâmetros: local_file (o caminho do arquivo local) e s3_path (o caminho do arquivo no bucket do S3).
-* A função tenta fazer o upload usando o cliente S3 (s3_client.upload_file()), que é configurado anteriormente com as credenciais da AWS.
-* Se o upload for bem-sucedido, é impressa uma mensagem indicando o sucesso. Se ocorrer um erro, a exceção é capturada e uma mensagem de erro é exibida.
+2. Upload dos arquivos para o S3:
+* Os arquivos locais contendo os dados de filmes e séries são enviados para os caminhos definidos no bucket S3 utilizando a função upload_to_s3.
+* Cada upload é registrado com uma mensagem no terminal que indica o sucesso ou falha no envio.
 
-3. Função lambda_handler(event=None, context=None)
-* A função fetch_data(BASE_URL_MOVIE, "filmes") é chamada para buscar os dados de filmes da API TMDB. O tipo "filmes" é passado como parâmetro para ajudar a identificar os dados.
-* O resultado da coleta de filmes é salvo localmente com a função save_to_local(filmes, "filmes"), e o caminho do arquivo gerado é armazenado em local_filmes.
+3. Mensagem de conclusão:
+* Após realizar o upload dos dois arquivos, uma mensagem é exibida no terminal para confirmar que o processo foi concluído com sucesso.
+Retorno do Lambda (se for usado no ambiente Lambda):
+* A função retorna um objeto com statusCode 200, indicando que a execução foi bem-sucedida.
+* A mensagem no corpo (body) confirma que os dados foram coletados e armazenados corretamente na camada RAW do S3.
 
-4. Coleta de dados de séries:
-* De forma semelhante, a função fetch_data(BASE_URL_TV, "series") coleta os dados de séries da API TMDB.
-* Os dados das séries são salvos localmente em um arquivo JSON com a função save_to_local(series, "series"), e o caminho do arquivo gerado é armazenado em local_series.
+4. Execução como script local:
+
+* Se o código for executado diretamente (fora do ambiente Lambda), a função lambda_handler é chamada automaticamente para realizar todo o processo.
+* Isso permite que o mesmo código seja usado tanto no ambiente Lambda quanto em um ambiente de desenvolvimento ou teste local.
 
 ## Etapa 01: Processo executado ##
 
