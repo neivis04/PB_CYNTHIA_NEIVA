@@ -14,7 +14,7 @@ O objetivo da execução do container é automatizar o processo de upload de arq
 
 1. [Exercicio](https://github.com/neivis04/PB_CYNTHIA_NEIVA/tree/main/Sprint%206/Exercicios/Exercicio_Lab_AWS_S3)
 
-4. [Exercicio](https://github.com/neivis04/PB_CYNTHIA_NEIVA/tree/main/Sprint%206/Exercicios/Exercicio_Lab_Lambda)
+2. [Exercicio](https://github.com/neivis04/PB_CYNTHIA_NEIVA/tree/main/Sprint%206/Exercicios/Exercicio_Lab_Lambda)
 
 # Certificados
 
