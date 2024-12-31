@@ -9,9 +9,9 @@ O objetivo do desafio é demonstrar a capacidade de integrar e processar dados e
 
 # Exercicios
 
-1. [Exercicio](https://github.com/neivis04/PB_CYNTHIA_NEIVA/tree/main/Sprint%208/Exercicios/api.tmdb)
+1. 🆗 [Exercicio Lab-Glue](https://github.com/neivis04/PB_CYNTHIA_NEIVA/tree/main/Sprint%208/Exercicios/api.tmdb)
 
-2. [Exercicio](https://github.com/neivis04/PB_CYNTHIA_NEIVA/tree/main/Sprint%208/Exercicios/lab.glue)
+2. 🆗 [Exercicio API-TMDB](https://github.com/neivis04/PB_CYNTHIA_NEIVA/tree/main/Sprint%208/Exercicios/lab.glue)
 
 
 
